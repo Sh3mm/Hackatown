@@ -1,14 +1,22 @@
 import json
+import csv
+import random
 
-import csv
-#----------------------------------------------------------------------
-import csv
+def generate():
+    x = random.randrange(80)
+    if x > 60:
+        return 0
+    else:
+        return x
+
+
 name = []
 longitude = []
 latitude = []
 status = []
 genre = []
 rate = []
+time = []
 with open('Places.csv', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
@@ -18,6 +26,8 @@ with open('Places.csv', newline='') as csvfile:
         status += [row[5]]
         genre += [row[6]]
         rate += [row[12]]
+        time += str(generate())
+        if time[-1] != 0: status[-1] = 0
 
 
 data = {'name' : name,
@@ -25,7 +35,8 @@ data = {'name' : name,
         'latitude': latitude,
         'status': status,
         'genre': genre,
-        'rate': rate}
+        'rate': rate,
+        'time': time}
 
 with open('data.json', 'w') as f:
     json.dump(data, f)
