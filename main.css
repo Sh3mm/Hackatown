@@ -10,14 +10,22 @@
 }
 
 #jumbotron1{
-
 	padding: 40px;
-	background-color: white;
 }
 
 #jumbotron2 {
 
+	margin: 40px;
 	padding: 40px;
 	border-radius: 10px;
-	background-color: #eee;
+	background-color: white;
+	
+	
+}
+
+#main{
+	background-image: url("wallpaper.jpg"); 
+	vertical-align: center; 
+	vertical-align: center; 
+ 
 }
