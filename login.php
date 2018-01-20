@@ -28,6 +28,7 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
         $_SESSION['isConnected'] = true;
         $_SESSION['username'] = $data['username'];
         $_SESSION['level'] = $data['accessLevel'];
+        header('Location: index.html');
     }
     else{
         // Wrong password

@@ -36,8 +36,10 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         ));
         // TODO : add error checking to account creation
         // account created, redirect
+    }else{
+        // go to
+        header('Location: login.php');
     }
-    header('Location: login.php');
 }
 ?>
 <!doctype html>

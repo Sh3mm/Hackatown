@@ -10,7 +10,7 @@ require_once('config.php');
 try
 {
     // Edit the credentials in config.php
-    $db = new PDO('mysql:host=localhost;dbname=hackatown;charset=utf8', $dbUser, $dbPasswd);
+    $db = new PDO('mysql:host=localhost;dbname='.';charset=utf8', $dbUser, $dbPasswd);
 }
 catch (Exception $e)
 {
