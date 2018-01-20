@@ -12,3 +12,5 @@ $dbPasswd = 'password';
 $DEFAULT_LEVEL = 0;
 $ACTIVATION_LEVEL = 1;
 $MIN_PASS_LEN = 8;
+// show all errors, only tp be used for debug
+error_reporting(E_ALL);
