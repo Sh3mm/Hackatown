@@ -24,11 +24,16 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
         $loginSuccess = password_verify($_POST['password'], $data['password']);
     }
     if($loginSuccess){
-        // setting sessions variables that verifies connection
-        $_SESSION['isConnected'] = true;
-        $_SESSION['username'] = $data['username'];
-        $_SESSION['level'] = $data['accessLevel'];
-        header('Location: index.html');
+        if($data['accessLevel'] >= $ACTIVATION_LEVEL) {
+            // setting sessions variables that verifies connection
+            $_SESSION['isConnected'] = true;
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['level'] = $data['accessLevel'];
+            header('Location: index.html');
+        }
+        else{
+            $errors[] = "Your account is not currently activated";
+        }
     }
     else{
         // Wrong password
