@@ -4,7 +4,7 @@
  * \File : login.php
  */
 require_once ('config.php');
-$require_once('checkConnection.php');
+require_once('checkConnection.php');
 $errors = [];
 if($_SESSION['isConnected']){
     header('Location: index.html');
