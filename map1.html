@@ -56,8 +56,8 @@
         if(document.getElementById('inputGroupSelect01').value == 1) {
           document.getElementById('adress').style.display = "none";
           document.getElementById('time').style.display = "none";
-		  document.getElementById('black').style.display = "none";
-		  document.getElementById('box').style.display = "none";
+		      document.getElementById('black').style.display = "none";
+		      document.getElementById('box').style.display = "none";
         }
         if(document.getElementById('inputGroupSelect01').value == 2) {
           document.getElementById('adress').style.display = "flex";
@@ -68,8 +68,37 @@
           document.getElementById('time').style.display = "flex";
         }
       }
+
+      function coordonates() {
+
+        var location_voulu = document.getElementById('adress_text');
+        var geocoder =  new google.maps.Geocoder();
+        geocoder.geocode( { 'address': location_voulu.value}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) { 
+          var lat_position = results[0].geometry.location.lat();
+          var lng_position = results[0].geometry.location.lng();
+          putMarker(lat_position, lng_position);
+
+        } else {
+          alert("Something got wrong " + status);
+        }
+        });
+      }
+
+      function putMarker(lat_position, lng_position) {
+
+        var myLatLng = {lat: lat_position, lng: lng_position};
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'current position'
+        });
+      }
+
     </script>
 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
   </head>
   <body >
@@ -113,13 +142,13 @@
 	<br>
 	
 	<div id="adress" class="input-group mb-3">
-		<input type="text"  class="form-control" placeholder="Adress" aria-label="Adress" aria-describedby="basic-addon1">
+		<input id ="adress_text" type="text"  class="form-control" placeholder="Adress" aria-label="Adress" aria-describedby="basic-addon1">
 	</div>
 	<br>
 	<div id="time" class="input-group mb-3">
 	   <input type="text" class="form-control" placeholder="Heure de départ" aria-label="Password" aria-describedby="basic-addon1">
 	</div>
-	<a href="#"><button type="button" class="btn btn-success">Go !</button></a><br><br>
+	<a href="#"><button onclick="coordonates();" type="button" class="btn btn-success">Go !</button></a><br><br>
 
 </div>  
 
