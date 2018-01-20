@@ -23,7 +23,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         }
         // TODO : Add check for username availability
     }
-    if(!empty($errors)){
+    if(empty($errors)){
         // Can create account
         require_once ('db.php');
 
@@ -36,8 +36,6 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         ));
         // TODO : add error checking to account creation
         // account created, redirect
-    }else{
-        // go to
         header('Location: login.php');
     }
 }
