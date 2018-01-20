@@ -24,9 +24,31 @@
         margin: 0;
         padding: 0;
       }
+	  #box {
+        position:fixed;
+		top: 25%;
+		left: 35%;
+	    z-index: 2;
+	    background-color: white;
+		width : 400px;
+		height: 50%; 
+		border-radius: 25px;
+	
+
+		
+      }
+	  #black {
+        position:fixed;
+	    z-index: 1;
+	    background-color: black;
+		width : 100%;
+		height: 100%; 
+		opacity: 0.5;
+		
+      }
     </style>
   </head>
-  <body>
+  <body >
     
     <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="index.html">Parking</a>
@@ -53,7 +75,44 @@
         </ul>
       </div>
     </nav>
-      
+    <center>      
+	  <div id="black" > </div>
+	  
+<div id="box" class="container-fluid">
+
+	<br>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+		<label class="input-group-text" for="inputGroupSelect01">Options</label>
+		</div>
+		<select class="custom-select" id="inputGroupSelect01">
+		<option selected>What are you looking for?</option>
+		<option onclick="selection();" value="1">Parking around me</option>
+		<option value="2">Leaving now</option>
+		<option value="3">Plan your parking</option>
+		</select>
+	</div>
+	<br>
+	
+	<div  id="adress" class="input-group mb-3">
+
+		<input type="text"  class="form-control" placeholder="Adress" aria-label="Adress" aria-describedby="basic-addon1">
+	</div>
+	<br>
+	<div class="input-group mb-3">
+
+	<input type="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+	</div>
+	<button style="margin-bottom:20px" type="button" class="btn btn-primary">Login</button>
+	<a href="signup.html"> <button style="margin-bottom:20px"  type="button" class="btn btn-primary">Sign up</button> </a>
+</div>
+<script> 
+	function selection(){
+		document.getElementById("adress").style.visibility = "gone"; 
+	}
+
+</center>
+	  
     <div id="map"></div>
     <script>
       var map;
