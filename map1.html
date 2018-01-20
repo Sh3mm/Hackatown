@@ -45,6 +45,21 @@
 
     </style>
 
+	<script>
+		var x = document.getElementById("demo");
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else { 
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		}
+
+		function showPosition(position) {
+			putMarker (position.coords.latitude, position.coords.longitude);
+		}
+	</script>
     <script type="text/JavaScript">
 
       function fadeAway() {
@@ -56,8 +71,10 @@
         if(document.getElementById('inputGroupSelect01').value == 1) {
           document.getElementById('adress').style.display = "none";
           document.getElementById('time').style.display = "none";
-		      document.getElementById('black').style.display = "none";
-		      document.getElementById('box').style.display = "none";
+		  getLocation();
+		  document.getElementById('black').style.display = "none";
+		  document.getElementById('box').style.display = "none";
+			  
         }
         if(document.getElementById('inputGroupSelect01').value == 2) {
           document.getElementById('adress').style.display = "flex";
@@ -71,6 +88,8 @@
 
       function coordonates() {
 
+	    document.getElementById('black').style.display = "none";
+		document.getElementById('box').style.display = "none";
         var location_voulu = document.getElementById('adress_text');
         var geocoder =  new google.maps.Geocoder();
         geocoder.geocode( { 'address': location_voulu.value}, function(results, status) {
@@ -87,7 +106,12 @@
 
       function putMarker(lat_position, lng_position) {
 
-        var myLatLng = {lat: lat_position, lng: lng_position};
+	    var myLatLng = {lat: lat_position, lng: lng_position};
+		
+		map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 17
+        });
 
         var marker = new google.maps.Marker({
           position: myLatLng,
