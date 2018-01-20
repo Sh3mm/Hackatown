@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  
       
     <link rel="stylesheet" href="main.css">
 
@@ -24,29 +24,51 @@
         margin: 0;
         padding: 0;
       }
-	   #box {
+	    #box {
         position:fixed;
-		top: 25%;
-		left: 35%;
-	    z-index: 2;
-	    background-color: white;
-		width : 400px;
-		height: 50%; 
-		border-radius: 25px;
-	
+		    top: 25%;
+		    left: 35%;
+	      z-index: 2;
+	      background-color: white;
+		    width : 400px;
+		    border-radius: 25px;
+      }
 
-		
-      }
-	  #black {
+  	  #black {
         position:fixed;
-	    z-index: 1;
-	    background-color: black;
-		width : 100%;
-		height: 100%; 
-		opacity: 0.5;
-		
-      }
+  	    z-index: 1;
+  	    background-color: black;
+  		  width : 100%;
+  		  height: 100%; 
+  		  opacity: 0.5;
+        }
+
     </style>
+
+    <script type="text/JavaScript">
+
+      function fadeAway() {
+
+        if(document.getElementById('inputGroupSelect01').value == 0) {
+          document.getElementById('adress').style.display = "flex";
+          document.getElementById('time').style.display = "flex";
+        }
+        if(document.getElementById('inputGroupSelect01').value == 1) {
+          document.getElementById('adress').style.display = "none";
+          document.getElementById('time').style.display = "none";
+        }
+        if(document.getElementById('inputGroupSelect01').value == 2) {
+          document.getElementById('adress').style.display = "flex";
+          document.getElementById('time').style.display = "none";
+        }
+        if(document.getElementById('inputGroupSelect01').value == 3) {
+          document.getElementById('adress').style.display = "flex";
+          document.getElementById('time').style.display = "flex";
+        }
+      }
+    </script>
+
+
   </head>
   <body >
     
@@ -61,20 +83,14 @@
           <li class="nav-item active">
             <a class="nav-link" href="signup.html">Log in / Sign up<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Parking Slot
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Leaving now ?</a>
-              <a class="dropdown-item" href="#">Planing your parking slot ?</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="map1.html">Check availability in Montréal</a>
-            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="map1.html">Parking Slot<span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
     </nav>
+
+
     <center>      
 	  <div id="black" > </div>
 	  
@@ -85,27 +101,25 @@
 		<div class="input-group-prepend">
 		<label class="input-group-text" for="inputGroupSelect01">Options</label>
 		</div>
-		<select class="custom-select" id="inputGroupSelect01">
-		<option selected>What are you looking for?</option>
-		<option onclick="selection();" value="1">Parking around me</option>
-		<option value="2">Leaving now</option>
-		<option value="3">Plan your parking</option>
+		<select onchange="fadeAway();" class="custom-select" id="inputGroupSelect01">
+		  <option value="0" selected>What are you looking for ?</option>
+		  <option value="1">Parking around me !</option>
+		  <option value="2">Leaving now ?</option>
+		  <option value="3">Plan your parking ?</option>
 		</select>
 	</div>
 	<br>
 	
-	<div  id="adress" class="input-group mb-3">
-
+	<div id="adress" class="input-group mb-3">
 		<input type="text"  class="form-control" placeholder="Adress" aria-label="Adress" aria-describedby="basic-addon1">
 	</div>
 	<br>
-	<div class="input-group mb-3">
-
-	<input type="Password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+	<div id="time" class="input-group mb-3">
+	   <input type="text" class="form-control" placeholder="Heure de départ" aria-label="Password" aria-describedby="basic-addon1">
 	</div>
-	<button style="margin-bottom:20px" type="button" class="btn btn-primary">Login</button>
-	<a href="signup.html"> <button style="margin-bottom:20px"  type="button" class="btn btn-primary">Sign up</button> </a>
-</div>
+	<a href="#"><button type="button" class="btn btn-success">Go !</button></a><br><br>
+
+</div>  
 
 </center>
 	  
