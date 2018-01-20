@@ -1,5 +1,4 @@
 #nav {
-    
     border-color: black;
 }
 
@@ -8,4 +7,17 @@
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 0px;
+}
+
+#jumbotron1{
+
+	padding: 40px;
+	background-color: white;
+}
+
+#jumbotron2 {
+
+	padding: 40px;
+	border-radius: 10px;
+	background-color: #eee;
 }
