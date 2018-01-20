@@ -49,7 +49,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
     <title>Register</title>
 </head>
 <body>
-<form method="post" target="register.php">
+<form method="post" action="register.php">
     <label for="user">Username : </label><input type = "text" name="username" id="user"> <br>
     <label for="email">Email : </label><input type = "text" name="email" id="email"> <br>
     <label for="pw">Password : </label><input type = "password" name = "password" id="pw"><br>

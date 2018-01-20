@@ -48,7 +48,7 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
     <title>Login</title>
 </head>
 <body>
-<form method="post" target="login.php">
+<form method="post" action="login.php">
     <label for="user">Username : </label><input type = "text" name="username" id="user"> <br>
     <label for="pw">Password : </label><input type = "password" name = "password" id="pw"><br>
     <input type="submit" value="register">
