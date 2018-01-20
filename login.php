@@ -5,7 +5,7 @@
  */
 
 $require_once('checkConnection.php');
-
+$errors = [];
 if($_SESSION['isConnected']){
     header('Location: index.html');
     exit();
@@ -31,10 +31,29 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
     }
     else{
         // Wrong password
-        require('login.html');
-        exit();
+        $errors[] = "Wrong username or password";
     }
 }
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Login</title>
+</head>
+<body>
+<form method="post" target="login.php">
+    <label for="user">Username : </label><input type = "text" name="username" id="user"> <br>
+    <label for="pw">Password : </label><input type = "password" name = "password" id="pw"><br>
+    <input type="submit" value="register">
+</form>
+<?php
+require ('errors.php');
+?>
+
+</body>
+</html>
+
 
 
 

@@ -35,6 +35,28 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
             'access' => $DEFAULT_LEVEL
         ));
         // TODO : add error checking to account creation
-        // account created
+        // account created, redirect
     }
+    header('Location: login.php');
 }
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Register</title>
+</head>
+<body>
+<form method="post" target="register.php">
+    <label for="user">Username : </label><input type = "text" name="username" id="user"> <br>
+    <label for="email">Email : </label><input type = "text" name="email" id="email"> <br>
+    <label for="pw">Password : </label><input type = "password" name = "password" id="pw"><br>
+    <label for="pw2">Confirm password : </label><input type = "password" name = "passwordConf" id="pw2"><br>
+    <input type="submit" value="register">
+</form>
+<?php
+require ('errors.php');
+?>
+
+</body>
+</html>
