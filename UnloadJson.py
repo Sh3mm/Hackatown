@@ -40,3 +40,4 @@ data = {'name' : name,
 
 with open('data.json', 'w') as f:
     json.dump(data, f)
+
