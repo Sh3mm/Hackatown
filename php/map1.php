@@ -64,7 +64,7 @@ height: 100%;
     </style>
 
 	<script>
-		var x = document.getElementById("demo");
+		let x = document.getElementById("demo");
 
 		function getLocation() {
             if (navigator.geolocation) {
@@ -79,7 +79,7 @@ height: 100%;
         }
 	</script>
     <script type="text/JavaScript">
-
+        let map;
       function fadeAway() {
 
           if(document.getElementById('inputGroupSelect01').value == 0) {
@@ -105,16 +105,45 @@ height: 100%;
       }
 
       function coordonates() {
-
+          console.log('test0');
           document.getElementById('black').style.display = "none";
           document.getElementById('box').style.display = "none";
-          var location_voulu = document.getElementById('adress_text');
-          var geocoder =  new google.maps.Geocoder();
+          let location_voulu = document.getElementById('adress_text');
+          let geocoder =  new google.maps.Geocoder();
           geocoder.geocode( { 'address': location_voulu.value}, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
-                  var lat_position = results[0].geometry.location.lat();
-                  var lng_position = results[0].geometry.location.lng();
+                  let lat_position = results[0].geometry.location.lat();
+                  let lng_position = results[0].geometry.location.lng();
                   putMarker(lat_position, lng_position);
+                  console.log('test1');
+                  xhttp = new XMLHttpRequest;
+                  xhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                          let nPark = 0;
+
+                          let data = JSON.parse(this.responseText);
+                          console.log(data);
+                          console.log(data.latitude.length);
+                          let i = 0;
+                          while(i < data.latitude.length){
+                              console.log(nPark);
+                              let pLoc = {lat: parseFloat(data.latitude[i]), lng: parseFloat(data.longitude[i])};
+                              let marker = new google.maps.Marker({
+                                  position: pLoc,
+                                  map: map,
+                                  title: toString(nPark)
+                              });
+                              marker.setMap(map);
+                              nPark++;
+                              i++;
+                          }
+                      }
+                  };
+                  xhttp.open("GET", "getParkings.php?lat="+lat_position+'&lon='+lng_position, true);
+                  xhttp.send();
+
+
+
 
               } else {
                   alert("Something got wrong " + status);
@@ -123,28 +152,20 @@ height: 100%;
       }
 
       function putMarker(lat_position, lng_position) {
-
-          var myLatLng = {lat: lat_position, lng: lng_position};
+            console.log('marker');
+          let myLatLng = {lat: lat_position, lng: lng_position};
 
 		map = new google.maps.Map(document.getElementById('map'), {
           center: myLatLng,
           zoom: 17
         });
 
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           title: 'current position'
         });
-          // synchronous request
-          var req = new XMLHttpRequest();
-          req.open("GET", "getParkings.php?lat="+lat_position+"&lon="+lng_position , false);
-          req.send();
 
-          var json = req.responseText;
-          var data = JSON.parse(json);
-
-          console.log(data);
       }
 
     </script>
@@ -211,7 +232,7 @@ height: 100%;
 
     <div id="map"></div>
     <script>
-      var map;
+      let map;
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 45.5088400, lng: -73.5878100},

@@ -12,18 +12,24 @@ require_once ('checkConnection.php');
 
 if(!$_SESSION['isConnected']){
     echo '{"message" : "Not connected"}';
+    exit();
 }
 elseif (isset($_GET['lon']) && isset($_GET['lat']) && !empty($_GET['lon']) && !empty($_GET['lat'])){
     $output = [];
-    $scriptPath = "../Getlocation.py";
+    $scriptPath = "/var/www/html/Hackatown/Getlocation.py";
     $lat = $_GET['lat'];
     $lon = $_GET['lon'];
     // get json from the python script
-    exec("python3 $scriptPath " . floatval($lon) . ' ' . floatval($lat), $output);
-    // output json
-    if($output[0] == true){
-        $dataPath = "../data.json";
-        echo file_get_contents($dataPath);
+    $command = "python3 $scriptPath " . floatval($lon) . ' ' . floatval($lat) . ' 2>&1';
+    if(exec($command)){
+        $dataPath = "/var/www/html/Hackatown/map.json";
+        $result =  file_get_contents($dataPath);
+        if($result === false){
+            echo '{"message" : "Error sending map"}';
+        }
+        else{
+            echo $result;
+        }
     }
     else{
         echo '{"message" : "Something went wrong..."}';
