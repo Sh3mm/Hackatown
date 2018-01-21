@@ -12,3 +12,5 @@ if(isset($_SESSION['username']) && isset($_SESSION['level']) && !empty($_SESSION
 }else{
     $_SESSION['isConnected'] = false;
 }
+
+?>
