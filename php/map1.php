@@ -125,14 +125,35 @@ height: 100%;
                           console.log(data);
                           console.log(data.latitude.length);
                           let i = 0;
+						  
+						  let contentString = "wesh";
+			
+
+					      let infowindow = new google.maps.InfoWindow({
+						  content: contentString
+							});
+						  
                           while(i < data.latitude.length){
                               console.log(nPark);
                               let pLoc = {lat: parseFloat(data.latitude[i]), lng: parseFloat(data.longitude[i])};
-                              let marker = new google.maps.Marker({
+							  var icon = {
+									url: "../img/green.png", // url
+									scaledSize: new google.maps.Size(40, 40), // scaled size
+									origin: new google.maps.Point(0,0), // origin
+									anchor: new google.maps.Point(0, 0) // anchor
+								};
+								let marker = new google.maps.Marker({
                                   position: pLoc,
                                   map: map,
+								  icon: icon,
                                   title: toString(nPark)
-                              });
+								});
+
+							marker.addListener('click', function() {
+							  infowindow.open(map, marker);
+							});
+
+
                               marker.setMap(map);
                               nPark++;
                               i++;
