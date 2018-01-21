@@ -15,7 +15,7 @@ if(!$_SESSION['isConnected']){
 }
 elseif (isset($_GET['lon']) && isset($_GET['lat']) && !empty($_GET['lon']) && !empty($_GET['lat'])){
     $output = [];
-    $scriptPath = "Getlocation.py";
+    $scriptPath = "../Getlocation.py";
     $lat = $_GET['lat'];
     $lon = $_GET['lon'];
     // get json from the python script
