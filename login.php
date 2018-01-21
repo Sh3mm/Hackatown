@@ -19,11 +19,9 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
         'username' => $_POST['username']
         ));
     $loginSuccess = false;
-    if($data = $req->fetch()){
-        echo password_verify($_POST['password'], $data['password']);
-        echo "resultat: ".$loginSuccess;
-    }
-    if($loginSuccess){
+    $data = $req->fetch();
+
+    if(password_verify($_POST['password'], $data['password'])){
         if($data['accessLevel'] >= $ACTIVATION_LEVEL) {
             // setting sessions variables that verifies connection
             $_SESSION['isConnected'] = true;

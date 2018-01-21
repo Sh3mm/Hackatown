@@ -29,17 +29,13 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
     if(empty($errors)){
         // Can create account
         require_once ('db.php');
-        echo 'creating account';
         $req = $db->prepare('INSERT INTO users(username, password, email, accessLevel, dateCreated) VALUES(:username, :hashedPass, :email , :access, NOW())');
-
-
         $req->execute(array(
             'username' => $_POST['username'],
             'hashedPass' => password_hash($_POST['password']),
             'email' => $_POST['email'],
             'access' => $DEFAULT_LEVEL
         ));
-        print_r($db->errorInfo());
         // TODO : add error checking to account creation
         // account created, redirect
         //header('Location: login.php');
