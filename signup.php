@@ -70,9 +70,9 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         #box{
             background-color: white;
             width : 400px;
-            height: 50%;
+            height: match;
             border-radius: 25px;
-            margin-top: 140px;
+            margin-top: 100px;
             opacity: 0.97;
         }
 
@@ -126,10 +126,11 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
 
         <button style="margin-bottom:20px"  type="submit" class="btn btn-primary">Submit</button>
         <a href="login.php"><button style="margin-bottom:20px"  type="button" class="btn btn-primary">Log in</button></a>
-        </form>
         <?php
         require ('errors.php');
-        ?>
+        ?><br>
+		</form>
+        
     </div>
 
 </center>

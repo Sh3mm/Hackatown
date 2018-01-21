@@ -8,8 +8,8 @@
 // show all errors, only tp be used for debug
 error_reporting(E_ALL);
 
-$dbUser = 'username';
-$dbPasswd = 'password';
+$dbUser = 'root';
+$dbPasswd = 'Emile1998';
 $dbName = 'hackatown';
 
 $DEFAULT_LEVEL = 1;
