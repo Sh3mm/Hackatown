@@ -156,9 +156,13 @@ height: 100%;
           <li class="nav-item active">
               <?php
               echo '<span class="nav-link">Welcome, ' . $_SESSION['username'] . '</span>';
-            // <a class="nav-link" href="signup.php">Log in / Sign up<span class="sr-only">(current)</span></a>
-            ?>
+              ?>
+
+
           </li>
+            <li>
+                <a class="nav-link" href="disconnect.php">Disconnect<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
       </div>
     </nav>
