@@ -151,21 +151,20 @@ if(!$_SESSION['isConnected']){
       }
 
       function putMarker(lat_position, lng_position) {
-            console.log('marker');
-          let myLatLng = {lat: lat_position, lng: lng_position};
+          console.log('marker');
+          var myLatLng = {lat: lat_position, lng: lng_position};
 
-		map = new google.maps.Map(document.getElementById('map'), {
+		      map = new google.maps.Map(document.getElementById('map'), {
           center: myLatLng,
           zoom: 17
-        });
+          });
 
-        let marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'current position'
-        });
-
-      }
+          let marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'current position'
+          });
+       }
 
     </script>
 
