@@ -35,7 +35,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
 
         $req->execute(array(
             'username' => $_POST['username'],
-            'hashedPass' => password_hash($_POST['username']),
+            'hashedPass' => password_hash($_POST['password']),
             'email' => $_POST['email'],
             'access' => $DEFAULT_LEVEL
         ));
