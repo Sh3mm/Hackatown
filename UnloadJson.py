@@ -3,7 +3,7 @@ import csv
 import random
 
 def generate():
-    x = random.randrange(80)
+    x = random.randint(1,81)
     if x > 60:
         return 0
     else:
@@ -26,7 +26,7 @@ with open('Places.csv', newline='', encoding='ISO-8859-1') as csvfile:
         status += [row[5]]
         genre += [row[6]]
         rate += [row[12]]
-        time += str(generate())
+        time += [str(generate())]
         if time[-1] != 0: status[-1] = 0
 
 
