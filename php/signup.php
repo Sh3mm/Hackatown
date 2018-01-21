@@ -38,7 +38,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         ));
         // TODO : add error checking to account creation
         // account created, redirect
-        //header('Location: login.php');
+        header('Location: login.php?created=true');
     }
 }
 ?>
@@ -64,7 +64,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
 
     <style>
         #main{
-            background-image: url("wallpaper.jpg");
+            background-image: url("../img/wallpaper.jpg");
             vertical-align: center;
         }
         #box{

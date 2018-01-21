@@ -57,7 +57,7 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
     <style>
         #main{
 
-            background-image: url("wallpaper.jpg");
+            background-image: url("../img/wallpaper.jpg");
             vertical-align: center;
 
         }
