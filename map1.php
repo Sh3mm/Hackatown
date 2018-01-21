@@ -136,6 +136,15 @@ height: 100%;
           map: map,
           title: 'current position'
         });
+          // synchronous request
+          var req = new XMLHttpRequest();
+          req.open("GET", "getParkings.php?lat="+lat_position+"&lon="+lng_position , false);
+          req.send();
+
+          var json = req.responseText;
+          var data = JSON.parse(json);
+
+          console.log(data);
       }
 
     </script>
