@@ -17,7 +17,7 @@ status = []
 genre = []
 rate = []
 time = []
-with open('Places.csv', newline='') as csvfile:
+with open('Places.csv', newline='', encoding='ISO-8859-1') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in spamreader:
         name += [row[0]]
