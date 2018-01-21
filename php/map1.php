@@ -16,6 +16,7 @@ if(!$_SESSION['isConnected']){
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,17 +32,17 @@ if(!$_SESSION['isConnected']){
     <title>Parking - HackaTown2K18</title>
 
     <style>
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-height: 100%;
-      }
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+      height: 100%;
+            }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 	    #box {
         position:fixed;
 		    top: 25%;
@@ -63,16 +64,20 @@ height: 100%;
 
     </style>
 
-	<script>
-		let x = document.getElementById("demo");
+  <script type="text/JavaScript">
 
-		function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
+
+
+  </script>
+
+	<script>        
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
 
 		function showPosition(position) {
             putMarker (position.coords.latitude, position.coords.longitude);
@@ -81,7 +86,6 @@ height: 100%;
     <script type="text/JavaScript">
         let map;
       function fadeAway() {
-
           if(document.getElementById('inputGroupSelect01').value == 0) {
               document.getElementById('adress').style.display = "flex";
               document.getElementById('time').style.display = "flex";
@@ -105,50 +109,45 @@ height: 100%;
       }
 
       function coordonates() {
-          console.log('test0');
-          document.getElementById('black').style.display = "none";
-          document.getElementById('box').style.display = "none";
-          let location_voulu = document.getElementById('adress_text');
-          let geocoder =  new google.maps.Geocoder();
-          geocoder.geocode( { 'address': location_voulu.value}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                  let lat_position = results[0].geometry.location.lat();
-                  let lng_position = results[0].geometry.location.lng();
-                  putMarker(lat_position, lng_position);
-                  console.log('test1');
-                  xhttp = new XMLHttpRequest;
-                  xhttp.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                          let nPark = 0;
-
-                          let data = JSON.parse(this.responseText);
-                          console.log(data);
-                          console.log(data.latitude.length);
-                          let i = 0;
-                          while(i < data.latitude.length){
-                              console.log(nPark);
-                              let pLoc = {lat: parseFloat(data.latitude[i]), lng: parseFloat(data.longitude[i])};
-                              let marker = new google.maps.Marker({
-                                  position: pLoc,
-                                  map: map,
-                                  title: toString(nPark)
-                              });
-                              marker.setMap(map);
-                              nPark++;
-                              i++;
-                          }
-                      }
-                  };
-                  xhttp.open("GET", "getParkings.php?lat="+lat_position+'&lon='+lng_position, true);
-                  xhttp.send();
-
-
-
-
-              } else {
-                  alert("Something got wrong " + status);
-              }
-          });
+        console.log('test0');
+        document.getElementById('black').style.display = "none";
+        document.getElementById('box').style.display = "none";
+        let location_voulu = document.getElementById('adress_text');
+        let geocoder =  new google.maps.Geocoder();
+        geocoder.geocode( { 'address': location_voulu.value}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          let lat_position = results[0].geometry.location.lat();
+          let lng_position = results[0].geometry.location.lng();
+          putMarker(lat_position, lng_position);
+          console.log('test1');
+          xhttp = new XMLHttpRequest;
+          xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            let nPark = 0;
+            let data = JSON.parse(this.responseText);
+            console.log(data);
+            console.log(data.latitude.length);
+            let i = 0;
+            while(i < data.latitude.length){
+              console.log(nPark);
+              let pLoc = {lat: parseFloat(data.latitude[i]), lng: parseFloat(data.longitude[i])};
+              let marker = new google.maps.Marker({
+              position: pLoc,
+              map: map,
+              title: toString(nPark)
+            });
+            marker.setMap(map);
+            nPark++;
+            i++;
+          }
+        }
+        };
+        xhttp.open("GET", "getParkings.php?lat="+lat_position+'&lon='+lng_position, true);
+        xhttp.send();
+        } else {
+          alert("Something got wrong " + status);
+        }
+        });
       }
 
       function putMarker(lat_position, lng_position) {
