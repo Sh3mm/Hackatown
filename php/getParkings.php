@@ -21,9 +21,13 @@ elseif (isset($_GET['lon']) && isset($_GET['lat']) && !empty($_GET['lon']) && !e
     // get json from the python script
     exec("python3 $scriptPath " . floatval($lon) . ' ' . floatval($lat), $output);
     // output json
-    foreach ($output as $item) {
-        echo $item;
-}
+    if($output[0] == true){
+        $dataPath = "../data.json";
+        echo file_get_contents($dataPath);
+    }
+    else{
+        echo '{"message" : "Something went wrong..."}';
+    }
 }
 else{
     echo '{"message" : "Wrong params"}';
