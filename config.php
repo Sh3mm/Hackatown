@@ -12,6 +12,6 @@ $dbUser = 'username';
 $dbPasswd = 'password';
 $dbName = 'hackatown';
 
-$DEFAULT_LEVEL = 0;
+$DEFAULT_LEVEL = 1;
 $ACTIVATION_LEVEL = 1;
 $MIN_PASS_LEN = 8;
