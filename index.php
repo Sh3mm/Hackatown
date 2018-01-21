@@ -38,6 +38,9 @@ require_once ('checkConnection.php');
                     echo '<span class="nav-link">Welcome, '. $_SESSION['username'];
                     ?>
             <li>
+                <a class="nav-link" href="map1.php">Map<span class="sr-only">(current)</span></a>
+            </li>
+            <li>
                 <a class="nav-link" href="disconnect.php">Disconnect<span class="sr-only">(current)</span></a>
             </li>
             </li>
