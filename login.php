@@ -17,11 +17,11 @@ elseif(isset($_POST['username']) && isset($_POST['password']) AND !empty($_POST[
     $req = $db->prepare('SELECT * FROM users WHERE username = :username');
     $req->execute(array(
         'username' => $_POST['username']
-        )
-    );
+        ));
     $loginSuccess = false;
     if($data = $req->fetch()){
-        $loginSuccess = password_verify($_POST['password'], $data['password']);
+        echo password_verify($_POST['password'], $data['password']);
+        echo "resultat: ".$loginSuccess;
     }
     if($loginSuccess){
         if($data['accessLevel'] >= $ACTIVATION_LEVEL) {
