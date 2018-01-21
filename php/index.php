@@ -18,7 +18,7 @@ require_once ('checkConnection.php');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
 
     <title>Parking - HackaTown2K18</title>
 </head>
@@ -35,8 +35,8 @@ require_once ('checkConnection.php');
             <li class="nav-item active">
                 <?php
                 if($_SESSION['isConnected']){
-                    echo '<span class="nav-link">Welcome, '. $_SESSION['username'];
-                    ?>
+                echo '<span class="nav-link">Welcome, '. $_SESSION['username'];
+                ?>
             <li>
                 <a class="nav-link" href="map1.php">Map<span class="sr-only">(current)</span></a>
             </li>
@@ -45,14 +45,14 @@ require_once ('checkConnection.php');
             </li>
             </li>
             <?php
-                }
-                else{
-                    ?>
-                    <a class="nav-link" href="signup.php">Log in / Sign up<span class="sr-only">(current)</span></a>
-                    </li>
-                <?php
-                }
+            }
+            else{
                 ?>
+                <a class="nav-link" href="signup.php">Log in / Sign up<span class="sr-only">(current)</span></a>
+                </li>
+                <?php
+            }
+            ?>
         </ul>
     </div>
 </nav>
