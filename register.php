@@ -32,7 +32,7 @@ elseif (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['
         $req = $db->prepare('INSERT INTO users(username, password, email, accessLevel, dateCreated) VALUES(:username, :hashedPass, :email , :access, NOW())');
         $req->execute(array(
             'username' => $_POST['username'],
-            'hashedPass' => password_hash($_POST['password']),
+            'hashedPass' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'email' => $_POST['email'],
             'access' => $DEFAULT_LEVEL
         ));
